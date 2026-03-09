@@ -7,6 +7,7 @@ public class UpgradeManager : MonoBehaviour
 
     public int upgradeCost = 50;
     public int multiplierCost = 200;
+    public int multiplier = 1;
 
     public TextMeshProUGUI upgradeText;
     public TextMeshProUGUI multiplierText;
@@ -69,4 +70,17 @@ public class UpgradeManager : MonoBehaviour
         upgradeCost = PlayerPrefs.GetInt("upgradeCost", upgradeCost);
         multiplierCost = PlayerPrefs.GetInt("multiplierCost", multiplierCost);
     }
+    public int startUpgradeCost = 10;
+    public int startMultiplierCost = 50;
+
+    public void ResetUpgrades()
+{
+    upgradeCost = startUpgradeCost;
+    multiplierCost = startMultiplierCost;
+
+    scoreManager.multiplier = 1;
+
+    SaveData();
+    UpdateUI();
+}
 }
